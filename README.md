@@ -13,9 +13,48 @@ and you can change anything that you need to later.
 
 # The `Pie` component
 
+This component provides a convenient method of creating a set of `TextWedge` components that
+divide up a full circle in proportion to a set of data values. Each data value can also have
+other information associated with it to customize the look of the corresponding pie segment.
+
+## props
+
+### `radius`
+The radius of the outer edge of the pie. The width and height of the SVG drawing will
+be 2x this radius unless you have exploded pie segments. Defaults to 120 pixels.
+
+### `centerRadius`
+This is the radius of the 'hole' to leave in the center of the pie. This is useful
+for creatng pie menus and doughnuts. Defaults to 10 pixels.
+
+### `className`
+The name of a CSS class to apply to the svg. drawing. In Material UI this
+is usually generated using the `makeStyles` function.
+
+### `margin`
+The amount of space to leave around the sides of each pie segment. Defaults to 3 pixels.
+Note that sincce each pie segment will have 3 pixels of space around it, the distance
+from the edges of two adjacent pie segments will be 6 pixels by default.
+
+### `padding`
+The amount of space to leave between the edge of the pie segment and the text inside of it. 
+Defaults to 5 pixels.
+
+### `data`
+The data to display on the pie. This defines the relative size of the pie
+slices, the text to display in each slice, and the styling to apply to each slice.
+
+You can also just set this property to an array of numbers to display a pie chart for
+those numbers.
+
+## Passing data
+
+To be continued...
+
 # The `TextWedge` component
 
-The `Pie` component creates a set of `TextWedge` components internally, but you can create these yourself for ultimate flexibility.
+The `Pie` component creates a set of `TextWedge` components internally, but you can create these yourself 
+for ultimate flexibility like this:
 
 ```javascript
 import React from 'react';
@@ -74,9 +113,9 @@ The distance from the center of the pie to the outside edge. Defaults to 120 pix
 You can either pass the same value to all `TextWedge` components in the pie, or you can
 scale your SVG to whatever size you want.
 
-### `centerRadius'
+### `centerRadius`
 The radius of a circle in the middle of the pie that will not be drawn. This is useful
-for cases where you want to draw a pie menu, or draw a doughnut. Defaults to 30 pixels.
+for cases where you want to draw a pie menu, or draw a doughnut. Defaults to 10 pixels.
 
 ### `startAngle`
 The angle in degrees to start drawing at. This prop has no default and must be specified
@@ -93,7 +132,7 @@ contains the nested elements. For this component the children must be text strin
 
 ### `className`
 The name of a CSS class to apply to the root element of the `TextWedge`. In Material UI this
-is normally generated using the `makeStyles` function.
+is usually generated using the `makeStyles` function.
 
 ### `classes`
 Optionally pass an object that overrides the styling of all parts of the `TextWedge` component.
