@@ -75,9 +75,81 @@ return <Pie data={data} />
 
 ```
 
-## Passing data
+## Custom styling
 
-To be continued...
+In the `data` prop you can specify a `classes` property for any wedge to override the styling of that wedge.
+The easy way to make this `classes` object is with the `makeStyles` function from the Material UI library.
+
+Below is an example of a Pie with two different wedge styles:
+
+```javascript
+import { makeStyles } from '@material-ui/core/styles';
+
+const navStyles = makeStyles((theme) => ({
+  root: {
+    stroke: 'red',
+  },
+  text: {
+    fontSize: '25px',
+    stroke: 'black',
+  },
+  wedge: {
+    fill: 'pink',
+    opacity: 0.2,
+    '&:hover': {
+      opacity: 0.4,
+    },
+  },
+}));
+
+const actionStyles = makeStyles((theme) => ({
+  root: {
+    stroke: 'blue',
+  },
+  text: {
+    fontSize: '15px',
+  },
+  wedge: {
+    fill: 'green',
+    stroke: 'purple',
+    strokeWidth: 2,
+    opacity: 0.2,
+    '&:hover': {
+      opacity: 0.4,
+    },
+  },
+}));
+
+export const MyPie = () => {
+  const navClasses = navStyles();
+  const actionClasses = actionStyles();
+
+  const data = [{
+    value: 1,
+    caption: 'Option 1',
+    classes: navClasses
+  },{
+    value: 1,
+    caption: 'Option 2',
+    classes: navClasses
+  },{
+    value: 1,
+    caption: 'Option 3',
+    classes: actionClasses
+  }{
+    value: 1,
+    caption: 'Option 4',
+    classes: actionClasses
+  },{
+    value: 1,
+    caption: 'Option 5',
+    classes: actionClasses
+  }];
+  
+  return (<Pie data={data} />
+}
+
+```
 
 # The `TextWedge` component
 
