@@ -40,12 +40,40 @@ from the edges of two adjacent pie segments will be 6 pixels by default.
 The amount of space to leave between the edge of the pie segment and the text inside of it. 
 Defaults to 5 pixels.
 
+### `lineSpacing`
+This is the vertical distance between lines of text. If you do not set this prop, then the
+text will be measured with all of the CSS styling applied to calculate the line spacing.
+
+### `lineHeight`
+The height of one line of text. By default this will be the 80% of the line spacing. This
+prop only affects the distance between the outside edge of the pie and the top of the 
+first line of text.
+
 ### `data`
 The data to display on the pie. This defines the relative size of the pie
-slices, the text to display in each slice, and the styling to apply to each slice.
+slices, the caption to display in each slice, and the styling to apply to each slice.
 
-You can also just set this property to an array of numbers to display a pie chart for
-those numbers.
+This is an example of the `data` prop:
+
+```javascript
+const data = [{
+    value: 20,
+    caption: 'China 20%',
+    explode: 20
+},{
+    value: 30,
+    caption: 'Europe 30%'
+},{
+    value: 10,
+    caption: 'Canada 10%'
+},{
+    value: 40,
+    caption: 'USA 40%'
+}];
+
+return <Pie data={data} />
+
+```
 
 ## Passing data
 
@@ -148,7 +176,7 @@ The height of one line of text. By default this will be the 80% of the line spac
 prop only affects the distance between the outside edge of the pie and the top of the 
 first line of text.
 
-### `margin`
+### `padding`
 The size of the space to leave between the left and right edge of the text and the edge of
 the pie segment. The default is 5 pixels.
 
@@ -156,7 +184,7 @@ the pie segment. The default is 5 pixels.
 Set this prop to a truthy value to draw the pie segment. If you do not set this prop then
 only the text will be drawn.
 
-### `wedgeMargin`
+### `margin`
 If `drawWedge` is true, then this prop sets the gap between this wedge and the adjacent one.
 The default value is 3 pixels. If you are not drawing the wedge then this prop has no effect.
 
