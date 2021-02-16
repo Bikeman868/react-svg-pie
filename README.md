@@ -10,7 +10,7 @@ applications to override any aspect of the CSS without having to define the enti
 I build these to be very flexible but have sensible defaults. This means that it's 
 very easy to get started, and you can change anything that you need to later.
 
-(This page)[EXAMPLES.md] contains some examples of what the components can look like.
+[This page](EXAMPLES.md) contains some examples of what the components can look like.
 
 # The `Pie` component
 
@@ -95,7 +95,7 @@ you to style the wedge and the text within it any way you want for each
 pie segment.
 
 The classes object can be built using the Material UI `makeStyles` function.
-This is illustrated in many of the (examples)[EXAMPLES.md].
+This is illustrated in many of the [examples](EXAMPLES.md).
 
 #### `explode`
 The distance to explode this pie segment by. Exploded pie segments are

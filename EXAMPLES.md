@@ -230,6 +230,41 @@ import React from 'react';
 import { TextWedge } from 'react-svg-pie';
 import { makeStyles } from '@material-ui/core/styles';
 
+const navStyles = makeStyles((theme) => ({
+  root: {
+    stroke: 'red',
+  },
+  text: {
+    fontSize: '25px',
+    stroke: 'black',
+  },
+  wedge: {
+    fill: 'pink',
+    opacity: 0.2,
+    '&:hover': {
+      opacity: 0.4,
+    },
+  },
+}));
+
+const actionStyles = makeStyles((theme) => ({
+  root: {
+    stroke: 'blue',
+  },
+  text: {
+    fontSize: '15px',
+  },
+  wedge: {
+    fill: 'green',
+    stroke: 'purple',
+    strokeWidth: 2,
+    opacity: 0.2,
+    '&:hover': {
+      opacity: 0.4,
+    },
+  },
+}));
+
 export const CustomTextWedge = () => {
   const navClasses = navStyles();
   const actionClasses = actionStyles();
