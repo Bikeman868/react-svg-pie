@@ -1,0 +1,16 @@
+{
+    "presets": [
+      [
+        "@babel/env",
+        {
+          "useBuiltIns": "usage",
+          "corejs": "3.6.5"
+        }
+      ],
+      "@babel/preset-react"
+    ],
+    "ignore": [
+        "src/**/*.test.js",
+        "src/**/*.stories.js",
+    ]
+  }

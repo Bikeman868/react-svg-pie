@@ -171,7 +171,7 @@ const wrapWords = function(radius, centerRadius, lineHeight, lineSpacing, angleR
 };
 
 // eslint-disable-next-line complexity
-export const TextWedge = (props) => {
+const TextWedge = (props) => {
   const classes = useStyles(props);
 
   let {
@@ -240,3 +240,5 @@ export const TextWedge = (props) => {
     </>
   );
 };
+
+export default TextWedge;

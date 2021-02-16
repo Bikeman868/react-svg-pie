@@ -7,7 +7,7 @@ const useStyles = makeStyles((theme) => ({
   root: {},
 }));
 
-export const Pie = (props) => {
+const Pie = (props) => {
   const classes = useStyles(props);
   let { width, height, radius, centerRadius, className, margin, padding, lineSpacing, lineHeight, data, ...otherProps } = props;
 
@@ -48,3 +48,5 @@ export const Pie = (props) => {
     </svg>
   );
 };
+
+export default Pie;
