@@ -1,15 +1,16 @@
 # react-svg-pie
 A React.js component for drawing pie segments with wrapped text using SVG.
 
-You can draw individual pie segments with the `TextWedge` component, or create a set of 
-`TextWedge` instances from data using the `Pie` component.
+You can draw individual pie segments with the `TextWedge` component, or manage 
+a collection of `TextWedge` instances from data using the `Pie` component.
 
 The components use the Material UI mechanism for defining a default style and allowing 
 applications to override any aspect of the CSS without having to define the entire style.
 
-Here are some examples of what the components can look like. I build these to be very 
-flexible but have sensible defaults. This means that it's very easy to get started, 
-and you can change anything that you need to later.
+I build these to be very flexible but have sensible defaults. This means that it's 
+very easy to get started, and you can change anything that you need to later.
+
+(This page)[EXAMPLES.md] contains some examples of what the components can look like.
 
 # The `Pie` component
 
@@ -72,8 +73,33 @@ const data = [{
 }];
 
 return <Pie data={data} />
-
 ```
+
+Below are the properties that you can set for each pie segment. Note that
+any other properties that you set will be passed to the `TextWedge` as
+props. This allows you to set an `onClick` property for example and this
+will be passed to `TextWedge` as an `onClick` prop.
+
+#### `value`
+The `value` property determines the relative size of the pie segments.
+Each segment is sized in proportion to its value relative to the other
+segments.
+
+#### `caption`
+This is the text to draw inside the segment. If no `caption` property is set
+then the value will be drawn in the segments.
+
+#### `classes`
+Defines all of the CSS classes to use for this pie segment. This allows
+you to style the wedge and the text within it any way you want for each
+pie segment.
+
+The classes object can be built using the Material UI `makeStyles` function.
+This is illustrated in many of the (examples)[EXAMPLES.md].
+
+#### `explode`
+The distance to explode this pie segment by. Exploded pie segments are
+"pulled out" from the pie circle to draw attention to them.
 
 ## Custom styling
 
