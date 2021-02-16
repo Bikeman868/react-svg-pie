@@ -276,12 +276,13 @@ export const CustomPie = () => {
 ```
 
 Note that `TextWedge` outputs an SVG `<g>` element and must be put inside an `<svg>` 
-element. It id done this way to give you more flexibility - for example you might want
+element. It is done this way to give you more flexibility - for example you might want
 to put multiple pie drawings in one SVG or combine the pie drawing with other drawing
 elements.
 
 ## `TextWedge` component `props`
-The `TextWedge` component has the following `props`, any other `props` passed to it will be passed down to the `<g>` element that it outputs. This allows you to pass other 
+The `TextWedge` component has the following `props`, any other `props` passed to it will 
+be passed down to the `<g>` element that it outputs. This allows you to pass other 
 `props` such as `onClick` to the SVG group.
 
 ### `radius`
