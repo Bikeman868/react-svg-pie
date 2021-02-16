@@ -42,6 +42,7 @@
     "@babel/plugin-syntax-export-default-from": "^7.12.13",
     "@babel/preset-env": "^7.8",
     "@babel/preset-react": "^7.8",
-    "rimraf": "^3.0.2"
+    "clsx": "^1",
+    "rimraf": "^3"
   }
 }

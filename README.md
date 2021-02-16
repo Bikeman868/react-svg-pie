@@ -16,6 +16,29 @@ the code that was used to produce each example. There are also some
 [the Pie component](src/Pie/Pie.stories.js) and 
 [the TextWedge component](src/TextWedge/TextWedge.stories.js).
 
+![Custom styling](docs/custom_styling.png)
+
+# Getting started
+
+To install this component, run this command in the root folder of your node.js application:
+```bash
+npm i react-svg-pie
+```
+
+To add a pie chart or pie menu to your application, add this to the top of your source file:
+```javascript
+import { Pie } from 'react-svg-pie';
+```
+
+To test if it's working, add this html to your component:
+```javascript
+   <Pie data={[{value:1, caption:'One'}, {value:1, caption:'Two'}, {value:1, caption:'Three'}]} />
+```
+
+Now take a look at the [examples](EXAMPLES.md) to get an idea about how this component can look.
+If you want to do something very specific, the components and their `props` are documented below.
+If you are still stuck, please raise an issue in GitHub. Thanks.
+
 # The `Pie` component
 
 This component provides a convenient method of creating a set of `TextWedge` components that
