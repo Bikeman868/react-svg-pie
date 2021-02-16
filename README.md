@@ -2,40 +2,58 @@
 A React.js component for drawing pie segments with wrapped text using SVG.
 
 You can draw individual pie segments with the `TextWedge` component, or manage 
-a collection of `TextWedge` instances from data using the `Pie` component.
+a collection of `TextWedge` instances using the `Pie` component.
 
 The components use the Material UI mechanism for defining a default style and allowing 
-applications to override any aspect of the CSS without having to define the entire style.
+applications to override any aspect of the CSS.
 
-I build these to be very flexible but have sensible defaults. This means that it's 
+I built these components to be very flexible but have sensible defaults. This means that it's 
 very easy to get started, and you can change anything that you need to later.
 
-[This page](EXAMPLES.md) contains some examples of what the components can look like.
+[This page contains some examples](EXAMPLES.md) of what the components look like, with
+the code that was used to produce each example. There are also some 
+[Storybooks](https://storybook.js.org/) that you can check out for 
+[the Pie component](src/Pie/Pie.stories.js) and 
+[the TextWedge component](src/TextWedge/TextWedge.stories.js).
 
 # The `Pie` component
 
 This component provides a convenient method of creating a set of `TextWedge` components that
 divide up a full circle in proportion to a set of data values. Each data value can also have
-other information associated with it to customize the look of the corresponding pie segment.
+other information associated with it to customize the look of the corresponding text wedge.
 
-## props
+## `Pie` component `props`
+
+The props that have special meaning are documented below. In addition, any other props
+that you set will be applied to the `<g>` element within the svg. This allows you to
+add `onClick` handlers and set the `transform` for example.
 
 ### `radius`
-The radius of the outer edge of the pie. The width and height of the SVG drawing will
-be 2x this radius unless you have exploded pie segments. Defaults to 120 pixels.
+The radius of the pie circle as a number of pixels. The width and height of the SVG drawing will
+default to 2x this value. Defaults to 120 pixels.
+
+### `width`
+The width of the SVG image produced. If you do not specify a width then it will default
+to 2x the radius of the pie.
+
+### `height`
+The height of the SVG image produced. If you do not specify a height then it will default
+to 2x the radius of the pie.
 
 ### `centerRadius`
 This is the radius of the 'hole' to leave in the center of the pie. This is useful
-for creatng pie menus and doughnuts. Defaults to 10 pixels.
+for creatng pie menus and doughnuts. Defaults to 10 pixels. Setting the `centerRadius`
+to the same value as the `margin` will ensure that all wedges come to a point.
 
 ### `className`
-The name of a CSS class to apply to the svg. drawing. In Material UI this
-is usually generated using the `makeStyles` function.
+The name of a CSS class to apply to the `<g>` element that wraps the pie drawing. In 
+Material UI this is usually generated using the `makeStyles` function. This allows
+you to style fonts, strokes and fills for the whole drawing.
 
 ### `margin`
 The amount of space to leave around the sides of each pie segment. Defaults to 3 pixels.
-Note that sincce each pie segment will have 3 pixels of space around it, the distance
-from the edges of two adjacent pie segments will be 6 pixels by default.
+Note that if each pie segment has 3 pixels of space on either side, then the distance
+between two adjacent pie segments will be 6 pixels.
 
 ### `padding`
 The amount of space to leave between the edge of the pie segment and the text inside of it. 
@@ -43,7 +61,9 @@ Defaults to 5 pixels.
 
 ### `lineSpacing`
 This is the vertical distance between lines of text. If you do not set this prop, then the
-text will be measured with all of the CSS styling applied to calculate the line spacing.
+text will be measured with all of the CSS styling applied to calculate the line spacing. Each
+pie segment can use different text sizes and the margins and wrapping will work correctly for
+each segment.
 
 ### `lineHeight`
 The height of one line of text. By default this will be the 80% of the line spacing. This
@@ -75,8 +95,8 @@ const data = [{
 return <Pie data={data} />
 ```
 
-Below are the properties that you can set for each pie segment. Note that
-any other properties that you set will be passed to the `TextWedge` as
+Below are the properties that you can set for each pie segment in the `data` prop. 
+Note that any other properties that you set will be passed to the `TextWedge` as
 props. This allows you to set an `onClick` property for example and this
 will be passed to `TextWedge` as an `onClick` prop.
 
@@ -87,7 +107,7 @@ segments.
 
 #### `caption`
 This is the text to draw inside the segment. If no `caption` property is set
-then the value will be drawn in the segments.
+then the `value` will be drawn in the segment.
 
 #### `classes`
 Defines all of the CSS classes to use for this pie segment. This allows
@@ -99,12 +119,16 @@ This is illustrated in many of the [examples](EXAMPLES.md).
 
 #### `explode`
 The distance to explode this pie segment by. Exploded pie segments are
-"pulled out" from the pie circle to draw attention to them.
+"pulled out" from the pie circle to draw attention to them. When you do this
+you might need to move the whole pie drawing within SVG to avoid clipping the
+exploded segments. You can do this by passing a `transform` prop to the `Pie`
+component. There are [examples](EXAMPLES.md) of how to do this. 
 
 ## Custom styling
 
-In the `data` prop you can specify a `classes` property for any wedge to override the styling of that wedge.
-The easy way to make this `classes` object is with the `makeStyles` function from the Material UI library.
+In the `data` prop you can specify a `classes` property for any wedge to 
+override the styling of that wedge. The easy way to make this `classes` object 
+is with the `makeStyles` function from the Material UI library.
 
 Below is an example of a Pie with two different wedge styles:
 
@@ -179,8 +203,8 @@ export const MyPie = () => {
 
 # The `TextWedge` component
 
-The `Pie` component creates a set of `TextWedge` components internally, but you can create these yourself 
-for ultimate flexibility like this:
+The `Pie` component creates a set of `TextWedge` components internally, 
+but you can create these yourself for ultimate flexibility like this:
 
 ```javascript
 import React from 'react';
@@ -228,33 +252,45 @@ export const CustomPie = () => {
 
 ```
 
-Note that `TextWedge` outputs an SVG `<g>` element and must be inside an `<svg>` element.
+Note that `TextWedge` outputs an SVG `<g>` element and must be put inside an `<svg>` 
+element. It id done this way to give you more flexibility - for example you might want
+to put multiple pie drawings in one SVG or combine the pie drawing with other drawing
+elements.
 
-## props
-The `TextWedge` component has the following props, all other props passed to it will be passed down to the `<g>` element.
-This allows you to pass other props such as `onClick` to the SVG group.
+## `TextWedge` component `props`
+The `TextWedge` component has the following `props`, any other `props` passed to it will be passed down to the `<g>` element that it outputs. This allows you to pass other 
+`props` such as `onClick` to the SVG group.
 
 ### `radius`
-The distance from the center of the pie to the outside edge. Defaults to 120 pixels.
+The distance from the center of the pie to the outside edge in pixels. Defaults to 120 pixels.
 You can either pass the same value to all `TextWedge` components in the pie, or you can
-scale your SVG to whatever size you want.
+leave the default 120 pixels and scale your SVG to whatever size you need.
 
 ### `centerRadius`
 The radius of a circle in the middle of the pie that will not be drawn. This is useful
 for cases where you want to draw a pie menu, or draw a doughnut. Defaults to 10 pixels.
 
 ### `startAngle`
-The angle in degrees to start drawing at. This prop has no default and must be specified
-for every `TextWedge`.
+The clockwise angle in degrees to start drawing at. This prop has no default and 
+must be specified for every `TextWedge`. Zero degrees is North of the center
+of the pie, 90 degrees is East, 180 degrees South and 270 degrees West. You can also
+set negative values.
+
+If the `startAngle` is less than the `endAngle` then the wedge is assumed to span
+0 degrees. For example if you set the start to -45 degrees and the end to +45 degrees
+then the text wedge will span 90 degrees with North in the center.
 
 ### `endAngle`
 The angle in degrees to finish drawing at. This prop has no default and must be specified
 for every `TextWedge`. The most common use case it to have the `endAngle` of one `TextWedge`
-match the `startAngle` of the next segment, but you can overlap them or leave gaps if you like.
+match the `startAngle` of the next `TextWedge` so that there are no gaps, but you can 
+also overlap them or leave gaps if you like.
 
 ### `children`
-You don't need to pass this prop explicitly, it will be set automatically by React and 
-contains the nested elements. For this component the children must be text strings.
+You don't need to pass this `prop` explicitly, it will be set automatically by React and 
+contains the nested elements. For this component the children must be text strings, you
+cannot place other React components inside the `TextWedge` because it is an SVG drawing
+and cannot contain arbitrary html elements.
 
 ### `className`
 The name of a CSS class to apply to the root element of the `TextWedge`. In Material UI this
@@ -266,7 +302,7 @@ Using this prop, you can change the style of the root element, the text, the wed
 baseline drawing.
 
 ### `lineSpacing`
-This is the vertical distance between lines of text. If you do not set this prop, then the
+This is the vertical distance between lines of text. If you do not set this `prop`, then the
 text will be measured with all of the CSS styling applied to calculate the line spacing.
 
 ### `lineHeight`
@@ -274,23 +310,26 @@ The height of one line of text. By default this will be the 80% of the line spac
 prop only affects the distance between the outside edge of the pie and the top of the 
 first line of text.
 
+You can pass this `prop` move the text up and down within the `TextWedge`.
+
 ### `padding`
-The size of the space to leave between the left and right edge of the text and the edge of
-the pie segment. The default is 5 pixels.
+The number of pixels to leave between the left and right edge of the text and the edge of
+the wedge border. The default is 5 pixels.
 
 ### `drawWedge`
-Set this prop to a truthy value to draw the pie segment. If you do not set this prop then
+Set this `prop` to a truthy value to draw the wedge. If you do not set this `prop` then
 only the text will be drawn.
 
 ### `margin`
-If `drawWedge` is true, then this prop sets the gap between this wedge and the adjacent one.
-The default value is 3 pixels. If you are not drawing the wedge then this prop has no effect.
+If `drawWedge` is `true`, then this `prop` sets the number of pixels to inset the border
+of the wedge drawing. The default value is 3 pixels. If you are not drawing the wedge 
+then this `prop` has no effect.
 
 ### `drawBaseline`
-Set this prop to a truthy value to draw a line on the text baseline. This is mostly useful for 
+Set this `prop` to a truthy value to draw a line on the text baseline. This is mostly useful for 
 debugging purposes, but can be used in production code if you like this effect. The style of the
-baseline can be customized by passing a `classes` prop with a `baseline` property.
+baseline can be customized by passing a `classes` `prop` with a `baseline` property.
 
 ### `explode`
-Defines how much to displace this pie segment from the circle to make this pie segment stand out.
-By default oie segments are not exploded.
+Defines how many pixels to displace this pie segment from the circle to make this 
+pie segment stand out. By default pie segments are not exploded.

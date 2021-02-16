@@ -9,7 +9,7 @@ const useStyles = makeStyles((theme) => ({
 
 export const Pie = (props) => {
   const classes = useStyles(props);
-  const { width, height, radius, centerRadius, className, margin, padding, lineSpacing, lineHeight, data, ...otherProps } = props;
+  let { width, height, radius, centerRadius, className, margin, padding, lineSpacing, lineHeight, data, ...otherProps } = props;
 
   let startAngle = 0;
   let totalValue = 0;
@@ -17,8 +17,10 @@ export const Pie = (props) => {
     totalValue += d.value;
   });
 
+  radius = radius || 120;
+
   return (
-    <svg width={width || 240} height={height || 240}>
+    <svg width={width || radius * 2} height={height || radius * 2}>
       <g className={clsx(classes.root, className)} {...otherProps}>
         {data.map((wedge, index) => {
           const endAngle = startAngle + (wedge.value * 360) / totalValue;
