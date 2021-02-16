@@ -1,2 +1,4 @@
-export { TextWedge } from './TextWedge/TextWedge';
-export { Pie } from './Pie/Pie';
+import TextWedge from './TextWedge/TextWedge';
+import Pie from './Pie/Pie';
+
+export { TextWedge, Pie}

@@ -1,7 +1,7 @@
 import React from 'react';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
-import { TextWedge } from './TextWedge/TextWedge';
+import { TextWedge } from '../TextWedge/TextWedge';
 
 const useStyles = makeStyles((theme) => ({
   root: {},

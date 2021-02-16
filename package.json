@@ -7,9 +7,12 @@
     "dist"
   ],
   "scripts": {
-    "build": "./node_modules/.bin/babel src --out-dir dist",
-    "start": "",
-    "test": "jest"
+    "clean": "rimraf dist/*",
+    "build": "npm run clean && ./node_modules/.bin/babel src --out-dir dist",
+    "start": "start-storybook -p 9009 -s public",
+    "test": "jest",
+    "lint": "./node_modules/.bin/eslint src",
+    "format": "./node_modules/.bin/prettier --write './src/**/*.{js,jsx}'"
   },
   "repository": {
     "type": "git",
@@ -18,8 +21,9 @@
   "keywords": [
     "react",
     "svg",
-    "piemenu",
-    "piechart"
+    "pie",
+    "pie-menu",
+    "pie-chart"
   ],
   "author": "Martin Halliday",
   "license": "Apache-2.0",
@@ -35,7 +39,9 @@
   "devDependencies": {
     "@babel/cli": "^7.8",
     "@babel/core": "^7.8",
+    "@babel/plugin-syntax-export-default-from": "^7.12.13",
     "@babel/preset-env": "^7.8",
-    "@babel/preset-react": "^7.12.13"
+    "@babel/preset-react": "^7.8",
+    "rimraf": "^3.0.2"
   }
 }

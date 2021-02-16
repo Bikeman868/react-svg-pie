@@ -1,1 +1,0 @@
-export { TextWedge } from './TextWedge';

@@ -9,6 +9,9 @@
       ],
       "@babel/preset-react"
     ],
+    "plugins": [
+        "@babel/plugin-syntax-export-default-from"
+    ],
     "ignore": [
         "src/**/*.test.js",
         "src/**/*.stories.js",
