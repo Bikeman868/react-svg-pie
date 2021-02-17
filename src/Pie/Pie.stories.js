@@ -1,6 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Pie } from './Pie';
+import Pie from './Pie';
 
 export default {
   title: 'Pie',

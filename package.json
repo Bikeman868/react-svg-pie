@@ -12,7 +12,9 @@
     "start": "start-storybook -p 9009 -s public",
     "test": "jest",
     "lint": "./node_modules/.bin/eslint src",
-    "format": "./node_modules/.bin/prettier --write './src/**/*.{js,jsx}'"
+    "format": "./node_modules/.bin/prettier --write './src/**/*.{js,jsx}'",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "repository": {
     "type": "git",
@@ -42,7 +44,15 @@
     "@babel/plugin-syntax-export-default-from": "^7.12.13",
     "@babel/preset-env": "^7.8",
     "@babel/preset-react": "^7.8",
+    "@storybook/addon-actions": "^6.1.18",
+    "@storybook/addon-essentials": "^6.1.18",
+    "@storybook/addon-links": "^6.1.18",
+    "@storybook/react": "^6.1.18",
+    "babel-loader": "^8.2.2",
     "clsx": "^1",
+    "react": "15 || 16 || 17",
+    "react-dom": "15 || 16 || 17",
     "rimraf": "^3"
-  }
+  },
+  "dependencies": {}
 }

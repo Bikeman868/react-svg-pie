@@ -1,6 +1,6 @@
 import React from 'react';
-import { TextWedge } from './TextWedge';
 import { makeStyles } from '@material-ui/core/styles';
+import TextWedge from './TextWedge';
 
 export default {
   title: 'TextWedge',
