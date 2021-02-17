@@ -19,17 +19,25 @@ for Node.js development. For this repository Node.js is used to transpile the
 latest ES syntax into ES5 for distribution. Node.js is also used to run Storybook 
 for testing the component prior to release.
 
+This is an example of a bash session to get started:
+```bash
+$ git clone https://github.com/Bikeman868/react-svg-pie
+$ cd react-svg-pie
+$ npm ci
+```
+
 # Testing
 
-We have plans to build unit tests with Jest. For now the testing is done using
-Storkbook.
+We have plans to build unit tests with Jest eventually.
+
+For now the testing is done using Storybook. Start Storybook with the command `npm run storybook`.
 
 # Release process
 
 These are the steps for releasing a new version.
 
-1. Update the version number using the `npm version` command
-2. Push the commit to GitHub with the tags option to include version tagging.
+1. Update the version number using the `npm version` command.
+2. Push the commit to GitHub with the tags option.
 3. Transpile the ES6 syntax code in the `./src` folder to ES5 syntax in `./dist`.
 4. Publish the code to npm using the `npm publish` command.
 
@@ -39,5 +47,6 @@ $ git add .
 $ git commit -m "My check in comment"
 $ npm version patch
 $ git push --tags
+$ npm run build
 $ npm publish
 ```
