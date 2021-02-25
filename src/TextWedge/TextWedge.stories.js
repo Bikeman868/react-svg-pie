@@ -139,7 +139,7 @@ export const SingleSegment = () => {
     <div className={classes.root}>
       <svg width="240" height="240" className={classes.svg}>
         <TextWedge startAngle={315} endAngle={300} centerRadius={0} margin={3} drawWedge>
-          This should be a full circle
+          This should be a almost a full circle
         </TextWedge>
       </svg>
     </div>

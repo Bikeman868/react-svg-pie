@@ -9,9 +9,9 @@ const useStyles = makeStyles((theme) => ({
 
 const Pie = (props) => {
   const classes = useStyles(props);
-  let { width, height, radius, centerRadius, className, margin, padding, lineSpacing, lineHeight, data, ...otherProps } = props;
+  let { width, height, radius, centerRadius, className, margin, padding, lineSpacing, lineHeight, data, startAngle, ...otherProps } = props;
 
-  let startAngle = 0;
+  startAngle = startAngle == undefined ? -180 : startAngle;
   let totalValue = 0;
   data.forEach((d) => {
     totalValue += d.value;

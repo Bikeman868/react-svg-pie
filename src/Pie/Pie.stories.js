@@ -135,7 +135,7 @@ export const PieMenu = () => {
     },
     {
       value: 1,
-      caption: 'Hide this nide',
+      caption: 'Hide this node',
       classes,
       onClick: () => {
         alert('Hide clicked');
