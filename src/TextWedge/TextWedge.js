@@ -35,43 +35,23 @@ class WedgeShape {
     const innerY = Math.cos(this.innerAngle) * this.innerRadius;
     const outerY = Math.cos(this.outerAngle) * this.outerRadius;
 
+    const largeArc = outerY < 0 ? 1 : 0;
+
     return (
-      'M-' +
-      outerX +
-      ' -' +
-      outerY +
-      ' L-' +
-      innerX +
-      ' -' +
-      innerY +
-      ' A' +
-      this.innerRadius +
-      ' ' +
-      this.innerRadius +
-      ' 0 0 1 ' +
-      innerX +
-      ' -' +
-      innerY +
-      ' L' +
-      outerX +
-      ' -' +
-      outerY +
-      ' A' +
-      this.outerRadius +
-      ' ' +
-      this.outerRadius +
-      ' 0 0 0 -' +
-      outerX +
-      ' -' +
-      outerY
+      'M' + -outerX + ' ' + -outerY +
+      'L' + -innerX + ' ' + -innerY +
+      'A' + this.innerRadius + ' ' + this.innerRadius + ' 0 ' + largeArc + ' 1 ' + innerX + ' ' + -innerY +
+      'L' + outerX + ' ' + -outerY +
+      'A' + this.outerRadius + ' ' + this.outerRadius + ' 0 ' + largeArc + ' 0 ' + -outerX + ' ' + -outerY
     );
   }
 
   textPath() {
     const innerX = Math.sin(this.innerAngle) * this.innerRadius;
     const innerY = Math.cos(this.innerAngle) * this.innerRadius;
+    const largeArc = innerY < 0 ? 1 : 0;
 
-    return 'M-' + innerX + ' -' + innerY + ' A' + this.innerRadius + ' ' + this.innerRadius + ' 0 0 1 ' + innerX + ' -' + innerY;
+    return 'M' + -innerX + ' ' + -innerY + 'A' + this.innerRadius + ' ' + this.innerRadius + ' 0 ' + largeArc + ' 1 ' + innerX + ' ' + -innerY;
   }
 
   right(radius) {

@@ -17,6 +17,21 @@ export const Simple = () => {
   return <Pie data={data} lineHeight={50} />;
 };
 
+export const OneSegment = () => {
+  const data = [{ value: 10 }];
+  return <Pie data={data} lineHeight={50} />;
+};
+
+export const TwoSegments = () => {
+  const data = [{ value: 10 }, { value: 35 }];
+  return <Pie data={data} lineHeight={50} />;
+};
+
+export const ThreeSegments = () => {
+  const data = [{ value: 10 }, { value: 35 }, { value: 19 }, ];
+  return <Pie data={data} lineHeight={50} />;
+};
+
 export const WithCaptions = () => {
   const data = [
     { value: 35, caption: 'USA $35M' },

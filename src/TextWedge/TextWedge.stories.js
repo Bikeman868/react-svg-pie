@@ -117,6 +117,35 @@ export const DefaultStyle = () => {
   );
 };
 
+export const LargeSegments = () => {
+  const classes = useStyles();
+  return (
+    <div className={classes.root}>
+      <svg width="240" height="240" className={classes.svg}>
+        <TextWedge startAngle={315} endAngle={190} drawWedge>
+          This is a large arc
+        </TextWedge>
+        <TextWedge startAngle={190} endAngle={315} drawWedge>
+          This is a smaller arc
+        </TextWedge>
+      </svg>
+    </div>
+  );
+};
+
+export const SingleSegment = () => {
+  const classes = useStyles();
+  return (
+    <div className={classes.root}>
+      <svg width="240" height="240" className={classes.svg}>
+        <TextWedge startAngle={315} endAngle={300} centerRadius={0} margin={3} drawWedge>
+          This should be a full circle
+        </TextWedge>
+      </svg>
+    </div>
+  );
+};
+
 export const LargerSize = () => {
   const classes = useStyles();
   const largeClasses = largeStyles();
