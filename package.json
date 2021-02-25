@@ -1,6 +1,6 @@
 {
   "name": "react-svg-pie",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "A React.js component for drawing pie segments with wrapped text using SVG",
   "main": "dist/index.js",
   "files": [
