@@ -19,9 +19,9 @@ export const Simple = () => {
 
 ```
 
-## With captions
+## With titles
 
-![Pie with captions](docs/captions.png)
+![Pie with titles](docs/titles.png)
 
 ```javascript
 import React from 'react';
@@ -29,11 +29,11 @@ import { Pie } from 'react-svg-pie';
 
 export const WithCaptions = () => {
   const data = [
-    { value: 35, caption: 'USA $35M' },
-    { value: 19, caption: 'Canada $19M' },
-    { value: 10, caption: 'China $10M' },
-    { value: 27, caption: 'Europe $27M' },
-    { value: 12, caption: 'Other $12M' },
+    { value: 35, title: 'USA $35M' },
+    { value: 19, title: 'Canada $19M' },
+    { value: 10, title: 'China $10M' },
+    { value: 27, title: 'Europe $27M' },
+    { value: 12, title: 'Other $12M' },
   ];
   return <Pie data={data} lineHeight={20} centerRadius={3} />;
 };
@@ -73,11 +73,11 @@ export const CustomStyling = () => {
   const regularClasses = regularStyles();
 
   const data = [
-    { value: 35, caption: 'USA $35M', classes: regularClasses },
-    { value: 27, caption: 'Europe $27M', classes: regularClasses },
-    { value: 19, caption: 'Canada $19M', classes: regularClasses },
-    { value: 12, caption: 'Other $12M', classes: regularClasses },
-    { value: 10, caption: 'China $10M', explode: 10, classes: highlightClasses },
+    { value: 35, title: 'USA $35M', classes: regularClasses },
+    { value: 27, title: 'Europe $27M', classes: regularClasses },
+    { value: 19, title: 'Canada $19M', classes: regularClasses },
+    { value: 12, title: 'Other $12M', classes: regularClasses },
+    { value: 10, title: 'China $10M', explode: 10, classes: highlightClasses },
   ];
   return <Pie data={data} radius={150} width={330} height={330} centerRadius={20} lineHeight={20} transform={'translate(15 15)'} />;
 };
@@ -106,11 +106,11 @@ const useStyles = makeStyles((theme) => ({
 export const PieChart = () => {
   const classes = useStyles();
   const data = [
-    { value: 35, caption: 'USA $35M', classes },
-    { value: 19, caption: 'Canada $19M', classes },
-    { value: 10, caption: 'China $10M', classes },
-    { value: 27, caption: 'Europe $27M', classes },
-    { value: 12, caption: 'Other $12M', classes },
+    { value: 35, title: 'USA $35M', classes },
+    { value: 19, title: 'Canada $19M', classes },
+    { value: 10, title: 'China $10M', classes },
+    { value: 27, title: 'Europe $27M', classes },
+    { value: 12, title: 'Other $12M', classes },
   ];
   return <Pie data={data} lineHeight={20} centerRadius={0} margin={0} />;
 };
@@ -147,7 +147,7 @@ export const PieMenu = () => {
   const data = [
     {
       value: 1,
-      caption: 'Go to some other page',
+      title: 'Go to some other page',
       classes,
       onClick: () => {
         alert('Go to other page clicked');
@@ -155,7 +155,7 @@ export const PieMenu = () => {
     },
     {
       value: 1,
-      caption: 'Expand this node in the graph',
+      title: 'Expand this node in the graph',
       classes,
       onClick: () => {
         alert('Expand clicked');
@@ -163,7 +163,7 @@ export const PieMenu = () => {
     },
     {
       value: 1,
-      caption: 'Hide this nide',
+      title: 'Hide this nide',
       classes,
       onClick: () => {
         alert('Hide clicked');
@@ -171,7 +171,7 @@ export const PieMenu = () => {
     },
     {
       value: 1,
-      caption: 'Give me more like this',
+      title: 'Give me more like this',
       classes,
       onClick: () => {
         alert('More clicked');
@@ -179,7 +179,7 @@ export const PieMenu = () => {
     },
     {
       value: 1,
-      caption: 'Hide all other nodes except this one',
+      title: 'Hide all other nodes except this one',
       classes,
       onClick: () => {
         alert('Hide others clicked');

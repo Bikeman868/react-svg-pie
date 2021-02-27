@@ -24,7 +24,7 @@ const Pie = (props) => {
       <g className={clsx(classes.root, className)} {...otherProps}>
         {data.map((wedge, index) => {
           const endAngle = startAngle + (wedge.value * 360) / totalValue;
-          const { value, caption, ...other } = wedge;
+          const { value, title, ...other } = wedge;
           const textWedge = (
             <TextWedge
               key={index}
@@ -38,7 +38,7 @@ const Pie = (props) => {
               endAngle={endAngle}
               drawWedge
               {...other}>
-              {caption || value + ''}
+              {title || value + ''}
             </TextWedge>
           );
           startAngle = endAngle;

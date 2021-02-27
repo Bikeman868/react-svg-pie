@@ -32,7 +32,7 @@ import { Pie } from 'react-svg-pie';
 
 To test if it's working, add this html to your component:
 ```javascript
-   <Pie data={[{value:1, caption:'One'}, {value:1, caption:'Two'}, {value:1, caption:'Three'}]} />
+   <Pie data={[{value:1, title:'One'}, {value:1, title:'Two'}, {value:1, title:'Three'}]} />
 ```
 
 Now take a look at the [examples](EXAMPLES.md) to get an idea about how this component can look.
@@ -95,24 +95,24 @@ first line of text.
 
 ### `data`
 The data to display on the pie. This defines the relative size of the pie
-slices, the caption to display in each slice, and the styling to apply to each slice.
+slices, the title to display in each slice, and the styling to apply to each slice.
 
 This is an example of the `data` prop:
 
 ```javascript
 const data = [{
     value: 20,
-    caption: 'China 20%',
+    title: 'China 20%',
     explode: 20
 },{
     value: 30,
-    caption: 'Europe 30%'
+    title: 'Europe 30%'
 },{
     value: 10,
-    caption: 'Canada 10%'
+    title: 'Canada 10%'
 },{
     value: 40,
-    caption: 'USA 40%'
+    title: 'USA 40%'
 }];
 
 return <Pie data={data} />
@@ -128,8 +128,8 @@ The `value` property determines the relative size of the pie segments.
 Each segment is sized in proportion to its value relative to the other
 segments.
 
-#### `caption`
-This is the text to draw inside the segment. If no `caption` property is set
+#### `title`
+This is the text to draw inside the segment. If no `title` property is set
 then the `value` will be drawn in the segment.
 
 #### `classes`
@@ -145,7 +145,13 @@ The distance to explode this pie segment by. Exploded pie segments are
 "pulled out" from the pie circle to draw attention to them. When you do this
 you might need to move the whole pie drawing within SVG to avoid clipping the
 exploded segments. You can do this by passing a `transform` prop to the `Pie`
-component. There are [examples](EXAMPLES.md) of how to do this. 
+component. There are [examples](EXAMPLES.md) of how to do this.
+
+#### `startAngle`
+You can set this prop to rotate the whole pie around its center. The default
+`startAngle` is -180 which draws the first pie segment clockwise starting in
+ the straight down (south) direction. This is the default because it works
+ well for pie menus with only one menu option.
 
 ## Custom styling
 
@@ -199,23 +205,23 @@ export const MyPie = () => {
 
   const data = [{
     value: 1,
-    caption: 'Option 1',
+    title: 'Option 1',
     classes: navClasses
   },{
     value: 1,
-    caption: 'Option 2',
+    title: 'Option 2',
     classes: navClasses
   },{
     value: 1,
-    caption: 'Option 3',
+    title: 'Option 3',
     classes: actionClasses
   }{
     value: 1,
-    caption: 'Option 4',
+    title: 'Option 4',
     classes: actionClasses
   },{
     value: 1,
-    caption: 'Option 5',
+    title: 'Option 5',
     classes: actionClasses
   }];
   
